@@ -1,0 +1,7 @@
+#!/bin/bash
+inpath=`pwd`"/src/"
+outpath=`pwd`"/documentation/"
+
+mkdir $outpath
+
+javadoc -d $outpath -sourcepath $inpath jliftsim
