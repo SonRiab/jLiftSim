@@ -2,6 +2,8 @@ package jliftsim.panel;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -11,7 +13,7 @@ import javax.swing.JPanel;
  * @author Bernard Ladenthin (bernard@ladenthin.net)
  * @version 0.1a
  */
-public class CreateEnginePanel  extends JPanel {
+public class CreateEnginePanel  extends JPanel implements Observer {
     private JLabel m_JLabelMaxPower;
     private JLabel m_JLabelMaxSpeed;
     private JLabel m_JLabelMaxLoad;
@@ -169,6 +171,11 @@ public class CreateEnginePanel  extends JPanel {
         m_JLabelMaxAccelerationUnit.setBounds(r);
         this.add(m_JLabelMaxAccelerationUnit);
 
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        System.out.println("update CreateEnginePanel: "+arg);
     }
 
 }

@@ -2,6 +2,8 @@ package jliftsim.panel;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -11,7 +13,7 @@ import javax.swing.JPanel;
  * @author Bernard Ladenthin (bernard@ladenthin.net)
  * @version 0.1a
  */
-public class CreateFloorsPanel extends JPanel {
+public class CreateFloorsPanel extends JPanel implements Observer {
     
     private JLabel m_JLabelFloors;
 
@@ -64,5 +66,10 @@ public class CreateFloorsPanel extends JPanel {
         r.height = 20;
         m_JComboBoxFloors.setBounds(r);
         this.add(m_JComboBoxFloors);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        System.out.println("update CreateFloorsPanel: "+arg);
     }
 }

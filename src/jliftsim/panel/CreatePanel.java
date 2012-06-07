@@ -6,9 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
+import jliftsim.CreateObservable;
 import jliftsim.frame.SimFrame;
 
 /**
@@ -19,23 +21,42 @@ import jliftsim.frame.SimFrame;
 public class CreatePanel extends JPanel implements ActionListener {
     private CreateFloorsPanel m_CreateFloorsPanel;
     private CreateEnginePanel m_CreateEnginePanel;
+    private CreatePredefinedPanel m_CreatePredefinedPanel;
 
     private JButton m_JButtonCreateInstance;
 
     private JSeparator m_FloorsSeparator;
     private JSeparator m_EngineSeparator;
+    private JSeparator m_PredefinedSeparator;
 
     private List<SimFrame> m_SimFrames;
 
+    private CreateObservable m_CreateObservable;
+
     public CreatePanel() {
         m_SimFrames = new ArrayList<>();
+        m_CreateObservable = new CreateObservable();
+
+        m_CreateFloorsPanel = new CreateFloorsPanel();
+        m_CreateEnginePanel = new CreateEnginePanel();
+        m_CreatePredefinedPanel = new CreatePredefinedPanel(
+            m_CreateObservable);
+
+        m_CreateObservable.addObserver(m_CreateFloorsPanel);
+        m_CreateObservable.addObserver(m_CreateEnginePanel);
+
+        m_JButtonCreateInstance = new JButton();
+        m_FloorsSeparator = new JSeparator();
+        m_EngineSeparator = new JSeparator();
+        m_PredefinedSeparator = new JSeparator();
+
         createAndShowGUI();
     }
 
     private void createAndShowGUI() {
         this.setLayout(null);
         Dimension dm = new Dimension();
-        dm.setSize(300, 238);
+        dm.setSize(300, 278);
         this.setPreferredSize(dm);
 
         /*
@@ -44,8 +65,8 @@ public class CreatePanel extends JPanel implements ActionListener {
         Rectangle r = new Rectangle();
         Rectangle rFloorsSeparator = new Rectangle();
         Rectangle rEngineSeparator = new Rectangle();
+        Rectangle rPredefinedSeparator = new Rectangle();
 
-        m_CreateFloorsPanel = new CreateFloorsPanel();
         r.x = 0;
         r.y = 0;
         r.width = m_CreateFloorsPanel.getPreferredSize().width;
@@ -60,7 +81,6 @@ public class CreatePanel extends JPanel implements ActionListener {
         //m_CreateFloorsPanel.setBackground(java.awt.Color.BLUE);
         this.add(m_CreateFloorsPanel);
 
-        m_CreateEnginePanel = new CreateEnginePanel();
         r.y += r.height + rFloorsSeparator.height;
         r.width = m_CreateEnginePanel.getPreferredSize().width;
         r.height = m_CreateEnginePanel.getPreferredSize().height;
@@ -74,10 +94,22 @@ public class CreatePanel extends JPanel implements ActionListener {
         //m_CreateEnginePanel.setBackground(java.awt.Color.YELLOW);
         this.add(m_CreateEnginePanel);
 
+        r.y += r.height + rEngineSeparator.height;
+        r.width = m_CreatePredefinedPanel.getPreferredSize().width;
+        r.height = m_CreatePredefinedPanel.getPreferredSize().height;
+
+        rPredefinedSeparator.x = 0;
+        rPredefinedSeparator.y = r.y + r.height;
+        rPredefinedSeparator.height = 2;
+        rPredefinedSeparator.width = r.width;
+        
+        m_CreatePredefinedPanel.setBounds(r);
+        //m_CreatePredefinedPanel.setBackground(java.awt.Color.LIGHT_GRAY);
+        this.add(m_CreatePredefinedPanel);
+
         /*
          * JButton
          */
-        m_JButtonCreateInstance = new JButton();
         r.x = 10;
         r.y += r.height + rEngineSeparator.height + 4;
         r.width = 170;
@@ -91,13 +123,14 @@ public class CreatePanel extends JPanel implements ActionListener {
         /*
          * Separator
          */
-        m_FloorsSeparator = new JSeparator();
         m_FloorsSeparator.setBounds(rFloorsSeparator);
         this.add(m_FloorsSeparator);
 
-        m_EngineSeparator = new JSeparator();
         m_EngineSeparator.setBounds(rEngineSeparator);
         this.add(m_EngineSeparator);
+
+        m_PredefinedSeparator.setBounds(rPredefinedSeparator);
+        this.add(m_PredefinedSeparator);
     }
 
     @Override
