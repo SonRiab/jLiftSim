@@ -6,13 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import jliftsim.CreateObservable;
 import jliftsim.Sim;
-import jliftsim.frame.SimFrame;
 
 /**
  *
@@ -148,6 +146,7 @@ public class CreatePanel extends JPanel implements ActionListener {
                 name, floors, maxPower, maxSpeed, maxLoad, maxAcceleration);
 
             m_Sim.add(sim);
+            sim.startSimulation();
             System.out.println("Add new sim ("+name+")");
         }
     }
