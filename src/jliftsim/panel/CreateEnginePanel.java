@@ -7,6 +7,7 @@ import java.util.Observer;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import jliftsim.CreateNotifyArg;
 
 /**
  *
@@ -175,7 +176,14 @@ public class CreateEnginePanel  extends JPanel implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        System.out.println("update CreateEnginePanel: "+arg);
+        CreateNotifyArg cna;
+        if( arg instanceof CreateNotifyArg ) {
+            cna = (CreateNotifyArg)arg;
+                m_JComboBoxMaxPower.setSelectedItem(cna.maxPower);
+                m_JComboBoxMaxSpeed.setSelectedItem(cna.maxSpeed);
+                m_JComboBoxMaxLoad.setSelectedItem(cna.maxLoad);
+                m_JComboBoxMaxAcceleration.setSelectedItem(cna.maxAcceleration);
+        }
     }
 
 }

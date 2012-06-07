@@ -7,6 +7,7 @@ import java.util.Observer;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import jliftsim.CreateNotifyArg;
 
 /**
  *
@@ -18,7 +19,7 @@ public class CreateFloorsPanel extends JPanel implements Observer {
     private JLabel m_JLabelFloors;
 
     private Integer[] m_JComboBoxItemsFloors =
-        {10, 50, 100, 163, 250, 500, 1000, 2000, 5000, 9000};
+        {10, 41, 50, 56, 88, 100, 101, 163, 250, 500, 1000, 2000, 5000, 9000};
 
     private JComboBox<Integer> m_JComboBoxFloors;
 
@@ -70,6 +71,10 @@ public class CreateFloorsPanel extends JPanel implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        System.out.println("update CreateFloorsPanel: "+arg);
+        CreateNotifyArg cna;
+        if( arg instanceof CreateNotifyArg ) {
+            cna = (CreateNotifyArg)arg;
+                m_JComboBoxFloors.setSelectedItem(cna.floors);
+        }
     }
 }

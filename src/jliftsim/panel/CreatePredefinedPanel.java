@@ -7,6 +7,7 @@ import java.awt.event.ItemListener;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import jliftsim.CreateNotifyArg;
 import jliftsim.CreateObservable;
 
 /**
@@ -85,9 +86,60 @@ public class CreatePredefinedPanel extends JPanel
     public void itemStateChanged(ItemEvent e) {
         if(e.getSource() == m_JComboBoxPredefined) {
             if(e.getStateChange() == ItemEvent.SELECTED) {
-                m_CreateObservable.predefinedChanged(
-                    m_JComboBoxPredefined.getSelectedItem()
-                );
+
+                CreateNotifyArg cna = new CreateNotifyArg();
+                switch(m_JComboBoxPredefined.getSelectedIndex()) {
+                    case 0: //default
+                        cna.floors = 50;
+                        cna.maxPower = 10;
+                        cna.maxSpeed = 60;
+                        cna.maxLoad = 5000;
+                        cna.maxAcceleration = 20;
+                        break;
+                    case 1: //Burj Khalifa (Dubai)
+                        cna.floors = 163;
+                        cna.maxPower = 10;
+                        cna.maxSpeed = 60;
+                        cna.maxLoad = 5000;
+                        cna.maxAcceleration = 20;
+                        break;
+                    case 2: //Taipei 101 (Taipei)
+                        cna.floors = 101;
+                        cna.maxPower = 10;
+                        cna.maxSpeed = 60;
+                        cna.maxLoad = 5000;
+                        cna.maxAcceleration = 20;
+                        break;
+                    case 3: //Petronas Towers (Kuala Lumpur)
+                        cna.floors = 88;
+                        cna.maxPower = 10;
+                        cna.maxSpeed = 60;
+                        cna.maxLoad = 5000;
+                        cna.maxAcceleration = 20;
+                        break;
+                    case 4: //Commerzbank Tower (Frankfurt a. M.)
+                        cna.floors = 56;
+                        cna.maxPower = 10;
+                        cna.maxSpeed = 60;
+                        cna.maxLoad = 5000;
+                        cna.maxAcceleration = 20;
+                        break;
+                    case 5: //Messeturm (Frankfurt a. M.)
+                        cna.floors = 56;
+                        cna.maxPower = 10;
+                        cna.maxSpeed = 60;
+                        cna.maxLoad = 5000;
+                        cna.maxAcceleration = 20;
+                        break;
+                    case 6: //Park Inn (Berlin)
+                        cna.floors = 41;
+                        cna.maxPower = 10;
+                        cna.maxSpeed = 60;
+                        cna.maxLoad = 5000;
+                        cna.maxAcceleration = 20;
+                        break;
+                }
+                m_CreateObservable.predefinedChanged(cna);
             }
         }
     }

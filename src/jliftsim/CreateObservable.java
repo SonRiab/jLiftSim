@@ -8,8 +8,9 @@ import java.util.Observable;
  * @version 0.1a
  */
 public class CreateObservable extends Observable {
-    public void predefinedChanged(Object data) {
+
+    public void predefinedChanged(CreateNotifyArg cna) {
         this.setChanged();
-        this.notifyObservers(data);
+        this.notifyObservers(cna);
     }
 }
