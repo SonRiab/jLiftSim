@@ -10,8 +10,8 @@ import jliftsim.data.CreateFrameData;
  */
 public class CreateObservable extends Observable {
 
-    public void predefinedChanged(CreateFrameData cna) {
+    public void predefinedChanged(CreateFrameData cfd) {
         this.setChanged();
-        this.notifyObservers(cna);
+        this.notifyObservers(cfd);
     }
 }
