@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import jliftsim.CreateObservable;
+import jliftsim.Sim;
 import jliftsim.frame.SimFrame;
 
 /**
@@ -29,12 +30,12 @@ public class CreatePanel extends JPanel implements ActionListener {
     private JSeparator m_EngineSeparator;
     private JSeparator m_PredefinedSeparator;
 
-    private List<SimFrame> m_SimFrames;
+    private List<Sim> m_Sim;
 
     private CreateObservable m_CreateObservable;
 
     public CreatePanel() {
-        m_SimFrames = new ArrayList<>();
+        m_Sim = new ArrayList<>();
         m_CreateObservable = new CreateObservable();
 
         m_CreateFloorsPanel = new CreateFloorsPanel();
@@ -135,7 +136,7 @@ public class CreatePanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String name         = String.valueOf(m_SimFrames.size());
+        String name         = String.valueOf(m_Sim.size());
         int floors          = m_CreateFloorsPanel.getFloors();
         int maxPower        = m_CreateEnginePanel.getMaxPower();
         int maxSpeed        = m_CreateEnginePanel.getMaxSpeed();
@@ -143,12 +144,11 @@ public class CreatePanel extends JPanel implements ActionListener {
         int maxAcceleration = m_CreateEnginePanel.getMaxAcceleration();
 
         if(e.getSource() == m_JButtonCreateInstance) {
-            SimFrame newSimFrame = new SimFrame(
-                name,floors,maxPower,maxSpeed,maxLoad,maxAcceleration
-            );
+            Sim sim = new Sim(
+                name, floors, maxPower, maxSpeed, maxLoad, maxAcceleration);
 
-            m_SimFrames.add(newSimFrame);
-            System.out.println("Add new SimFrame ("+name+")");
+            m_Sim.add(sim);
+            System.out.println("Add new sim ("+name+")");
         }
     }
 }

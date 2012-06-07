@@ -2,6 +2,8 @@ package jliftsim.frame;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JFrame;
 import jliftsim.panel.SimPanel;
 
@@ -10,24 +12,16 @@ import jliftsim.panel.SimPanel;
  * @author Bernard Ladenthin (bernard@ladenthin.net)
  * @version 0.1a
  */
-public class SimFrame extends JFrame {
+public class SimFrame extends JFrame implements Observer {
 
     SimPanel m_SimPanel;
 
-    private void createAndShowGUI(
-         String name
-        ,int floors
-        ,int maxPower
-        ,int maxSpeed
-        ,int maxLoad
-        ,int maxAcceleration
-    ) {
-        m_SimPanel = new SimPanel(
-            name, floors, maxPower, maxSpeed, maxLoad, maxAcceleration);
+    private void createAndShowGUI() {
+        m_SimPanel = new SimPanel();
         this.setVisible(true);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle("jLiftSim SimFrame ("+name+")");
+        //this.setTitle("jLiftSim SimFrame ("+name+")");
         this.add(m_SimPanel);
         /*
          * http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4511106
@@ -40,16 +34,8 @@ public class SimFrame extends JFrame {
         centerThis();
     }
 
-    public SimFrame(
-         String name
-        ,int floors
-        ,int maxPower
-        ,int maxSpeed
-        ,int maxLoad
-        ,int maxAcceleration
-    ) {
-        createAndShowGUI(
-            name, floors, maxPower, maxSpeed, maxLoad, maxAcceleration);
+    public SimFrame() {
+        createAndShowGUI();
     }
 
     public void centerThis() {
@@ -57,5 +43,10 @@ public class SimFrame extends JFrame {
         int top  = (screenSize.height - getHeight()) / 2;
         int left = (screenSize.width  - getWidth() ) / 2;
         setLocation(left, top);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

@@ -1,6 +1,8 @@
 package jliftsim.panel;
 
 import java.awt.Dimension;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JPanel;
 
 /**
@@ -8,33 +10,14 @@ import javax.swing.JPanel;
  * @author Bernard Ladenthin (bernard@ladenthin.net)
  * @version 0.1a
  */
-public class SimPanel extends JPanel {
-    private String m_Name;
-    private int m_Floors;
-    private int m_MaxPower;
-    private int m_MaxSpeed;
-    private int m_MaxLoad;
-    private int m_MaxAcceleration;
+public class SimPanel extends JPanel implements Observer {
 
     private AnimationPanel m_AnimationPanel;
     private EnginePanel m_EnginePanel;
     private InCabinRoomPanel m_InCabinRoomPanel;
 
     public SimPanel(
-         String name
-        ,int floors
-        ,int maxPower
-        ,int maxSpeed
-        ,int maxLoad
-        ,int maxAcceleration
     ) {
-        m_Name = name;
-        m_Floors = floors;
-        m_MaxPower = maxPower;
-        m_MaxSpeed = maxSpeed;
-        m_MaxLoad = maxLoad;
-        m_MaxAcceleration = maxAcceleration;
-
         m_EnginePanel = new EnginePanel();
         m_InCabinRoomPanel = new InCabinRoomPanel();
         m_AnimationPanel = new AnimationPanel();
@@ -59,5 +42,10 @@ public class SimPanel extends JPanel {
         m_AnimationPanel.setBounds(700, 0, 300, 600);
         //m_AnimationPanel.setBackground(java.awt.Color.RED);
         this.add(m_AnimationPanel);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
