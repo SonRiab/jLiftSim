@@ -15,7 +15,6 @@ public final class CreateFrame extends JFrame {
     CreatePanel m_CreatePanel;
 
     public void createAndShowGUI() {
-        m_CreatePanel = new CreatePanel();
         this.add(m_CreatePanel);
         this.setVisible(true);
         this.setResizable(false);
@@ -33,6 +32,8 @@ public final class CreateFrame extends JFrame {
     }
 
     public CreateFrame() {
+        m_CreatePanel = new CreatePanel();
+
         createAndShowGUI();
     }
 

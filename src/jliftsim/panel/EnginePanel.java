@@ -52,6 +52,37 @@ public class EnginePanel extends JPanel implements Observer {
     private JSeparator m_BottomSeparator;
 
     public EnginePanel() {
+        m_JLabelCurrentPower = new JLabel();
+        m_JLabelCurrentSpeed = new JLabel();
+        m_JLabelCurrentLoad = new JLabel();
+        m_JLabelCurrentAcceleration = new JLabel();
+        m_JProgressBarCurrentPower = new JProgressBar();
+        m_JProgressBarCurrentSpeed = new JProgressBar();
+        m_JProgressBarCurrentLoad = new JProgressBar();
+        m_JProgressBarCurrentAcceleration = new JProgressBar();
+        m_JTextFieldCurrentPower = new JTextField();
+        m_JTextFieldCurrentSpeed = new JTextField();
+        m_JTextFieldCurrentLoad = new JTextField();
+        m_JTextFieldCurrentAcceleration = new JTextField();
+        m_JLabelCurrentPowerUnit = new JLabel();
+        m_JLabelCurrentSpeedUnit = new JLabel();
+        m_JLabelCurrentLoadUnit = new JLabel();
+        m_JLabelCurrentAccelerationUnit = new JLabel();
+        m_JLabelMaxPower = new JLabel();
+        m_JLabelMaxSpeed = new JLabel();
+        m_JLabelMaxLoad = new JLabel();
+        m_JLabelMaxAcceleration = new JLabel();
+        m_JTextFieldMaxPower = new JTextField();
+        m_JTextFieldMaxSpeed = new JTextField();
+        m_JTextFieldMaxLoad = new JTextField();
+        m_JTextFieldMaxAcceleration = new JTextField();
+        m_JLabelMaxPowerUnit = new JLabel();
+        m_JLabelMaxSpeedUnit = new JLabel();
+        m_JLabelMaxLoadUnit = new JLabel();
+        m_JLabelMaxAccelerationUnit = new JLabel();
+        m_CurrentMaxSeparator = new JSeparator();
+        m_BottomSeparator = new JSeparator();
+
         createAndShowGUI();
     }
 
@@ -70,7 +101,6 @@ public class EnginePanel extends JPanel implements Observer {
         /*
          * Current Label
          */
-        m_JLabelCurrentPower = new JLabel();
         r.x = 10;
         r.y = 10;
         r.width = 120;
@@ -79,19 +109,16 @@ public class EnginePanel extends JPanel implements Observer {
         m_JLabelCurrentPower.setBounds(r);
         this.add(m_JLabelCurrentPower);
 
-        m_JLabelCurrentSpeed = new JLabel();
         r.y += 40;
         m_JLabelCurrentSpeed.setText("Current speed");
         m_JLabelCurrentSpeed.setBounds(r);
         this.add(m_JLabelCurrentSpeed);
 
-        m_JLabelCurrentLoad = new JLabel();
         r.y += 40;
         m_JLabelCurrentLoad.setText("Current load");
         m_JLabelCurrentLoad.setBounds(r);
         this.add(m_JLabelCurrentLoad);
 
-        m_JLabelCurrentAcceleration = new JLabel();
         r.y += 40;
         m_JLabelCurrentAcceleration.setText("Current acceleration");
         m_JLabelCurrentAcceleration.setBounds(r);
@@ -101,7 +128,6 @@ public class EnginePanel extends JPanel implements Observer {
         /*
          * Current Progress Bar
          */
-        m_JProgressBarCurrentPower = new JProgressBar();
         r.x = 140;
         r.y = 10;
         r.width = 100;
@@ -110,19 +136,16 @@ public class EnginePanel extends JPanel implements Observer {
         m_JProgressBarCurrentPower.setStringPainted(true);
         this.add(m_JProgressBarCurrentPower);
 
-        m_JProgressBarCurrentSpeed = new JProgressBar();
         r.y += 40;
         m_JProgressBarCurrentSpeed.setBounds(r);
         m_JProgressBarCurrentSpeed.setStringPainted(true);
         this.add(m_JProgressBarCurrentSpeed);
 
-        m_JProgressBarCurrentLoad = new JProgressBar();
         r.y += 40;
         m_JProgressBarCurrentLoad.setBounds(r);
         m_JProgressBarCurrentLoad.setStringPainted(true);
         this.add(m_JProgressBarCurrentLoad);
 
-        m_JProgressBarCurrentAcceleration = new JProgressBar();
         r.y += 40;
         m_JProgressBarCurrentAcceleration.setBounds(r);
         m_JProgressBarCurrentAcceleration.setStringPainted(true);
@@ -132,7 +155,6 @@ public class EnginePanel extends JPanel implements Observer {
         /*
          * Current Values
          */
-        m_JTextFieldCurrentPower = new JTextField();
         r.x = 250;
         r.y = 10;
         r.width = 60;
@@ -141,19 +163,16 @@ public class EnginePanel extends JPanel implements Observer {
         m_JTextFieldCurrentPower.setEditable(false);
         this.add(m_JTextFieldCurrentPower);
 
-        m_JTextFieldCurrentSpeed = new JTextField();
         r.y += 40;
         m_JTextFieldCurrentSpeed.setBounds(r);
         m_JTextFieldCurrentSpeed.setEditable(false);
         this.add(m_JTextFieldCurrentSpeed);
 
-        m_JTextFieldCurrentLoad = new JTextField();
         r.y += 40;
         m_JTextFieldCurrentLoad.setBounds(r);
         m_JTextFieldCurrentLoad.setEditable(false);
         this.add(m_JTextFieldCurrentLoad);
 
-        m_JTextFieldCurrentAcceleration = new JTextField();
         r.y += 40;
         m_JTextFieldCurrentAcceleration.setBounds(r);
         m_JTextFieldCurrentAcceleration.setEditable(false);
@@ -163,7 +182,6 @@ public class EnginePanel extends JPanel implements Observer {
         /*
          * Current Label Unit
          */
-        m_JLabelCurrentPowerUnit = new JLabel();
         r.x = 320;
         r.y = 10;
         r.width = 30;
@@ -172,19 +190,16 @@ public class EnginePanel extends JPanel implements Observer {
         m_JLabelCurrentPowerUnit.setBounds(r);
         this.add(m_JLabelCurrentPowerUnit);
 
-        m_JLabelCurrentSpeedUnit = new JLabel();
         r.y += 40;
         m_JLabelCurrentSpeedUnit.setText("km/h");
         m_JLabelCurrentSpeedUnit.setBounds(r);
         this.add(m_JLabelCurrentSpeedUnit);
 
-        m_JLabelCurrentLoadUnit = new JLabel();
         r.y += 40;
         m_JLabelCurrentLoadUnit.setText("kg");
         m_JLabelCurrentLoadUnit.setBounds(r);
         this.add(m_JLabelCurrentLoadUnit);
 
-        m_JLabelCurrentAccelerationUnit = new JLabel();
         r.y += 40;
         m_JLabelCurrentAccelerationUnit.setText("m/s²");
         m_JLabelCurrentAccelerationUnit.setBounds(r);
@@ -194,7 +209,6 @@ public class EnginePanel extends JPanel implements Observer {
         /*
          * Max Label
          */
-        m_JLabelMaxPower = new JLabel();
         r.x = 370;
         r.y = 10;
         r.width = 100;
@@ -203,19 +217,16 @@ public class EnginePanel extends JPanel implements Observer {
         m_JLabelMaxPower.setBounds(r);
         this.add(m_JLabelMaxPower);
 
-        m_JLabelMaxSpeed = new JLabel();
         r.y += 40;
         m_JLabelMaxSpeed.setText("Max speed");
         m_JLabelMaxSpeed.setBounds(r);
         this.add(m_JLabelMaxSpeed);
 
-        m_JLabelMaxLoad = new JLabel();
         r.y += 40;
         m_JLabelMaxLoad.setText("Max Load");
         m_JLabelMaxLoad.setBounds(r);
         this.add(m_JLabelMaxLoad);
 
-        m_JLabelMaxAcceleration = new JLabel();
         r.y += 40;
         m_JLabelMaxAcceleration.setText("Max Acceleration");
         m_JLabelMaxAcceleration.setBounds(r);
@@ -225,7 +236,6 @@ public class EnginePanel extends JPanel implements Observer {
         /*
          * Max JTextField
          */
-        m_JTextFieldMaxPower = new JTextField();
         r.x = 480;
         r.y = 10;
         r.width = 60;
@@ -234,19 +244,16 @@ public class EnginePanel extends JPanel implements Observer {
         m_JTextFieldMaxPower.setEditable(false);
         this.add(m_JTextFieldMaxPower);
 
-        m_JTextFieldMaxSpeed = new JTextField();
         r.y += 40;
         m_JTextFieldMaxSpeed.setBounds(r);
         m_JTextFieldMaxSpeed.setEditable(false);
         this.add(m_JTextFieldMaxSpeed);
 
-        m_JTextFieldMaxLoad = new JTextField();
         r.y += 40;
         m_JTextFieldMaxLoad.setBounds(r);
         m_JTextFieldMaxLoad.setEditable(false);
         this.add(m_JTextFieldMaxLoad);
 
-        m_JTextFieldMaxAcceleration = new JTextField();
         r.y += 40;
         m_JTextFieldMaxAcceleration.setBounds(r);
         m_JTextFieldMaxAcceleration.setEditable(false);
@@ -256,7 +263,6 @@ public class EnginePanel extends JPanel implements Observer {
         /*
          * Current Label Unit
          */
-        m_JLabelMaxPowerUnit = new JLabel();
         r.x = 550;
         r.y = 10;
         r.width = 30;
@@ -265,19 +271,16 @@ public class EnginePanel extends JPanel implements Observer {
         m_JLabelMaxPowerUnit.setBounds(r);
         this.add(m_JLabelMaxPowerUnit);
 
-        m_JLabelMaxSpeedUnit = new JLabel();
         r.y += 40;
         m_JLabelMaxSpeedUnit.setText("km/h");
         m_JLabelMaxSpeedUnit.setBounds(r);
         this.add(m_JLabelMaxSpeedUnit);
 
-        m_JLabelMaxLoadUnit = new JLabel();
         r.y += 40;
         m_JLabelMaxLoadUnit.setText("kg");
         m_JLabelMaxLoadUnit.setBounds(r);
         this.add(m_JLabelMaxLoadUnit);
 
-        m_JLabelMaxAccelerationUnit = new JLabel();
         r.y += 40;
         m_JLabelMaxAccelerationUnit.setText("m/s²");
         m_JLabelMaxAccelerationUnit.setBounds(r);
@@ -287,7 +290,6 @@ public class EnginePanel extends JPanel implements Observer {
         /*
          * Separator
          */
-        m_CurrentMaxSeparator = new JSeparator();
         r.x = 360;
         r.y = 10;
         r.height = dm.height - (r.y*2);
@@ -296,7 +298,6 @@ public class EnginePanel extends JPanel implements Observer {
         m_CurrentMaxSeparator.setBounds(r);
         this.add(m_CurrentMaxSeparator);
 
-        m_BottomSeparator = new JSeparator();
         r.x = 0;
         r.height = 2;
         r.y = dm.height - r.height;

@@ -20,28 +20,6 @@ public class SimPanel extends JPanel {
     private EnginePanel m_EnginePanel;
     private InCabinRoomPanel m_InCabinRoomPanel;
 
-    private void createAndShowGUI() {
-        this.setLayout(null);
-        Dimension dm = new Dimension();
-        dm.setSize(1000, 600);
-        this.setPreferredSize(dm);
-
-        m_EnginePanel = new EnginePanel();
-        m_EnginePanel.setBounds(0, 0, 700, 200);
-        //m_EnginePanel.setBackground(java.awt.Color.BLUE);
-        this.add(m_EnginePanel);
-
-        m_InCabinRoomPanel = new InCabinRoomPanel();
-        m_InCabinRoomPanel.setBounds(0, 200, 700, 400);
-        //m_InCabinRoomPanel.setBackground(java.awt.Color.CYAN);
-        this.add(m_InCabinRoomPanel);
-
-        m_AnimationPanel = new AnimationPanel();
-        m_AnimationPanel.setBounds(700, 0, 300, 600);
-        //m_AnimationPanel.setBackground(java.awt.Color.RED);
-        this.add(m_AnimationPanel);
-    }
-
     public SimPanel(
          String name
         ,int floors
@@ -57,6 +35,29 @@ public class SimPanel extends JPanel {
         m_MaxLoad = maxLoad;
         m_MaxAcceleration = maxAcceleration;
 
+        m_EnginePanel = new EnginePanel();
+        m_InCabinRoomPanel = new InCabinRoomPanel();
+        m_AnimationPanel = new AnimationPanel();
+
         createAndShowGUI();
+    }
+
+    private void createAndShowGUI() {
+        this.setLayout(null);
+        Dimension dm = new Dimension();
+        dm.setSize(1000, 600);
+        this.setPreferredSize(dm);
+
+        m_EnginePanel.setBounds(0, 0, 700, 200);
+        //m_EnginePanel.setBackground(java.awt.Color.BLUE);
+        this.add(m_EnginePanel);
+
+        m_InCabinRoomPanel.setBounds(0, 200, 700, 400);
+        //m_InCabinRoomPanel.setBackground(java.awt.Color.CYAN);
+        this.add(m_InCabinRoomPanel);
+
+        m_AnimationPanel.setBounds(700, 0, 300, 600);
+        //m_AnimationPanel.setBackground(java.awt.Color.RED);
+        this.add(m_AnimationPanel);
     }
 }

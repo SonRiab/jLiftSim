@@ -4,9 +4,7 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 import jliftsim.CreateNotifyArg;
 
 /**
@@ -20,19 +18,15 @@ public class CreateEnginePanel  extends JPanel implements Observer {
     private JLabel m_JLabelMaxLoad;
     private JLabel m_JLabelMaxAcceleration;
 
-    private Integer[] m_JComboBoxItemsMaxPower =
-        {1, 2, 5, 10, 20, 50};
-    private Integer[] m_JComboBoxItemsMaxSpeed =
-        {10, 15, 20, 30, 40, 50, 60, 70, 80, 90, 100};
-    private Integer[] m_JComboBoxItemsMaxLoad =
-        {1000, 1500, 2000, 5000, 10000};
-    private Integer[] m_JComboBoxItemsMaxAcceleration =
-        {5, 10, 15, 20, 25, 30, 50};
+    private SpinnerModel m_SpinnerModelMaxPower;
+    private SpinnerModel m_SpinnerModelMaxSpeed;
+    private SpinnerModel m_SpinnerModelMaxLoad;
+    private SpinnerModel m_SpinnerModelMaxAcceleration;
 
-    private JComboBox<Integer> m_JComboBoxMaxPower;
-    private JComboBox<Integer> m_JComboBoxMaxSpeed;
-    private JComboBox<Integer> m_JComboBoxMaxLoad;
-    private JComboBox<Integer> m_JComboBoxMaxAcceleration;
+    private JSpinner m_JSpinnerMaxPower;
+    private JSpinner m_JSpinnerMaxSpeed;
+    private JSpinner m_JSpinnerMaxLoad;
+    private JSpinner m_JSpinnerMaxAcceleration;
 
     private JLabel m_JLabelMaxPowerUnit;
     private JLabel m_JLabelMaxSpeedUnit;
@@ -40,20 +34,46 @@ public class CreateEnginePanel  extends JPanel implements Observer {
     private JLabel m_JLabelMaxAccelerationUnit;
 
     public CreateEnginePanel() {
+        m_JLabelMaxPower = new JLabel();
+        m_JLabelMaxSpeed = new JLabel();
+        m_JLabelMaxLoad = new JLabel();
+        m_JLabelMaxAcceleration = new JLabel();
+
+        m_JLabelMaxPowerUnit = new JLabel();
+        m_JLabelMaxSpeedUnit = new JLabel();
+        m_JLabelMaxLoadUnit = new JLabel();
+        m_JLabelMaxAccelerationUnit = new JLabel();
+
+        m_SpinnerModelMaxPower = new SpinnerNumberModel(
+            1, 1, Integer.MAX_VALUE, 1);
+        m_JSpinnerMaxPower = new JSpinner(m_SpinnerModelMaxPower);
+
+        m_SpinnerModelMaxSpeed = new SpinnerNumberModel(
+            1, 1, Integer.MAX_VALUE, 1);
+        m_JSpinnerMaxSpeed = new JSpinner(m_SpinnerModelMaxSpeed);
+
+        m_SpinnerModelMaxLoad = new SpinnerNumberModel(
+            1, 1, Integer.MAX_VALUE, 1);
+        m_JSpinnerMaxLoad = new JSpinner(m_SpinnerModelMaxLoad);
+
+        m_SpinnerModelMaxAcceleration = new SpinnerNumberModel(
+            1, 1, Integer.MAX_VALUE, 1);
+        m_JSpinnerMaxAcceleration = new JSpinner(m_SpinnerModelMaxAcceleration);
+
         createAndShowGUI();
     }
 
     public int getMaxPower() {
-        return (int)m_JComboBoxMaxPower.getSelectedItem();
+        return (int)m_JSpinnerMaxPower.getValue();
     }
     public int getMaxSpeed() {
-        return (int)m_JComboBoxMaxSpeed.getSelectedItem();
+        return (int)m_JSpinnerMaxSpeed.getValue();
     }
     public int getMaxLoad() {
-        return (int)m_JComboBoxMaxLoad.getSelectedItem();
+        return (int)m_JSpinnerMaxLoad.getValue();
     }
     public int getMaxAcceleration() {
-        return (int)m_JComboBoxMaxAcceleration.getSelectedItem();
+        return (int)m_JSpinnerMaxAcceleration.getValue();
     }
 
     private void createAndShowGUI() {
@@ -71,7 +91,6 @@ public class CreateEnginePanel  extends JPanel implements Observer {
         /*
          * JLabel
          */
-        m_JLabelMaxPower = new JLabel();
         r.x = 10;
         r.y = 10;
         r.width = 120;
@@ -80,19 +99,16 @@ public class CreateEnginePanel  extends JPanel implements Observer {
         m_JLabelMaxPower.setBounds(r);
         this.add(m_JLabelMaxPower);
 
-        m_JLabelMaxSpeed = new JLabel();
         r.y += 40;
         m_JLabelMaxSpeed.setText("Max Speed");
         m_JLabelMaxSpeed.setBounds(r);
         this.add(m_JLabelMaxSpeed);
 
-        m_JLabelMaxLoad = new JLabel();
         r.y += 40;
         m_JLabelMaxLoad.setText("Max Load");
         m_JLabelMaxLoad.setBounds(r);
         this.add(m_JLabelMaxLoad);
 
-        m_JLabelMaxAcceleration = new JLabel();
         r.y += 40;
         m_JLabelMaxAcceleration.setText("Max Acceleration");
         m_JLabelMaxAcceleration.setBounds(r);
@@ -100,52 +116,35 @@ public class CreateEnginePanel  extends JPanel implements Observer {
 
         //######################################################################
         /*
-         * JComboBox
+         * JSpinner
          */
         //EngineMaxPower
-        m_JComboBoxMaxPower = new JComboBox<>();
         r.x = 130;
         r.y = 10;
         r.width = 80;
         r.height = 20;
-        for(Integer i : m_JComboBoxItemsMaxPower ) {
-            m_JComboBoxMaxPower.addItem(i);
-        }
-        m_JComboBoxMaxPower.setBounds(r);
-        this.add(m_JComboBoxMaxPower);
+        m_JSpinnerMaxPower.setBounds(r);
+        this.add(m_JSpinnerMaxPower);
 
         //EngineMaxSpeed
-        m_JComboBoxMaxSpeed = new JComboBox<>();
         r.y += 40;
-        for(Integer i : m_JComboBoxItemsMaxSpeed ) {
-            m_JComboBoxMaxSpeed.addItem(i);
-        }
-        m_JComboBoxMaxSpeed.setBounds(r);
-        this.add(m_JComboBoxMaxSpeed);
+        m_JSpinnerMaxSpeed.setBounds(r);
+        this.add(m_JSpinnerMaxSpeed);
 
         //EngineMaxLoad
-        m_JComboBoxMaxLoad = new JComboBox<>();
         r.y += 40;
-        for(Integer i : m_JComboBoxItemsMaxLoad ) {
-            m_JComboBoxMaxLoad.addItem(i);
-        }
-        m_JComboBoxMaxLoad.setBounds(r);
-        this.add(m_JComboBoxMaxLoad);
+        m_JSpinnerMaxLoad.setBounds(r);
+        this.add(m_JSpinnerMaxLoad);
 
         //EngineMaxAcceleration
-        m_JComboBoxMaxAcceleration = new JComboBox<>();
         r.y += 40;
-        for(Integer i : m_JComboBoxItemsMaxAcceleration ) {
-            m_JComboBoxMaxAcceleration.addItem(i);
-        }
-        m_JComboBoxMaxAcceleration.setBounds(r);
-        this.add(m_JComboBoxMaxAcceleration);
+        m_JSpinnerMaxAcceleration.setBounds(r);
+        this.add(m_JSpinnerMaxAcceleration);
 
         //######################################################################
         /*
          * Current Label Unit
          */
-        m_JLabelMaxPowerUnit = new JLabel();
         r.x = 220;
         r.y = 10;
         r.width = 30;
@@ -154,19 +153,16 @@ public class CreateEnginePanel  extends JPanel implements Observer {
         m_JLabelMaxPowerUnit.setBounds(r);
         this.add(m_JLabelMaxPowerUnit);
 
-        m_JLabelMaxSpeedUnit = new JLabel();
         r.y += 40;
         m_JLabelMaxSpeedUnit.setText("km/h");
         m_JLabelMaxSpeedUnit.setBounds(r);
         this.add(m_JLabelMaxSpeedUnit);
 
-        m_JLabelMaxLoadUnit = new JLabel();
         r.y += 40;
         m_JLabelMaxLoadUnit.setText("kg");
         m_JLabelMaxLoadUnit.setBounds(r);
         this.add(m_JLabelMaxLoadUnit);
 
-        m_JLabelMaxAccelerationUnit = new JLabel();
         r.y += 40;
         m_JLabelMaxAccelerationUnit.setText("m/s²");
         m_JLabelMaxAccelerationUnit.setBounds(r);
@@ -179,10 +175,10 @@ public class CreateEnginePanel  extends JPanel implements Observer {
         CreateNotifyArg cna;
         if( arg instanceof CreateNotifyArg ) {
             cna = (CreateNotifyArg)arg;
-                m_JComboBoxMaxPower.setSelectedItem(cna.maxPower);
-                m_JComboBoxMaxSpeed.setSelectedItem(cna.maxSpeed);
-                m_JComboBoxMaxLoad.setSelectedItem(cna.maxLoad);
-                m_JComboBoxMaxAcceleration.setSelectedItem(cna.maxAcceleration);
+                m_JSpinnerMaxPower.setValue(cna.maxPower);
+                m_JSpinnerMaxSpeed.setValue(cna.maxSpeed);
+                m_JSpinnerMaxLoad.setValue(cna.maxLoad);
+                m_JSpinnerMaxAcceleration.setValue(cna.maxAcceleration);
         }
     }
 

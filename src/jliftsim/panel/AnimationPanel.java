@@ -18,6 +18,8 @@ public class AnimationPanel extends JPanel implements Observer {
     private JSeparator m_LeftSeparator;
 
     public AnimationPanel() {
+        m_LeftSeparator = new JSeparator();
+
         createAndShowGUI();
     }
 
@@ -40,7 +42,6 @@ public class AnimationPanel extends JPanel implements Observer {
         r.y = 0;
         r.height = dm.height;
         r.width = 2;
-        m_LeftSeparator = new JSeparator();
         m_LeftSeparator.setOrientation(SwingConstants.VERTICAL);
         m_LeftSeparator.setBounds(r);
         this.add(m_LeftSeparator);
