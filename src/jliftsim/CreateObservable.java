@@ -1,6 +1,7 @@
 package jliftsim;
 
 import java.util.Observable;
+import jliftsim.data.CreateFrameData;
 
 /**
  *
@@ -9,7 +10,7 @@ import java.util.Observable;
  */
 public class CreateObservable extends Observable {
 
-    public void predefinedChanged(CreateNotifyArg cna) {
+    public void predefinedChanged(CreateFrameData cna) {
         this.setChanged();
         this.notifyObservers(cna);
     }

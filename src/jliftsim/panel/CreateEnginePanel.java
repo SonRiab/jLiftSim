@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
-import jliftsim.CreateNotifyArg;
+import jliftsim.data.CreateFrameData;
 
 /**
  *
@@ -172,13 +172,13 @@ public class CreateEnginePanel  extends JPanel implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        CreateNotifyArg cna;
-        if( arg instanceof CreateNotifyArg ) {
-            cna = (CreateNotifyArg)arg;
-                m_JSpinnerMaxPower.setValue(cna.maxPower);
-                m_JSpinnerMaxSpeed.setValue(cna.maxSpeed);
-                m_JSpinnerMaxLoad.setValue(cna.maxLoad);
-                m_JSpinnerMaxAcceleration.setValue(cna.maxAcceleration);
+        CreateFrameData cfd;
+        if( arg instanceof CreateFrameData ) {
+            cfd = (CreateFrameData)arg;
+                m_JSpinnerMaxPower.setValue(cfd.maxPower);
+                m_JSpinnerMaxSpeed.setValue(cfd.maxSpeed);
+                m_JSpinnerMaxLoad.setValue(cfd.maxLoad);
+                m_JSpinnerMaxAcceleration.setValue(cfd.maxAcceleration);
         }
     }
 

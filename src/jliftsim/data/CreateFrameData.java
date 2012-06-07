@@ -1,11 +1,11 @@
-package jliftsim;
+package jliftsim.data;
 
 /**
  *
  * @author Bernard Ladenthin (bernard@ladenthin.net)
  * @version 0.1a
  */
-public class CreateNotifyArg extends Object {
+public class CreateFrameData extends Object {
 
     public int floors;
     public int maxPower;
@@ -13,7 +13,7 @@ public class CreateNotifyArg extends Object {
     public int maxLoad;
     public int maxAcceleration;
 
-    public void CreateNotifyArg(
+    public void CreateFrameData(
         int floors,
         int maxPower,
         int maxSpeed,
@@ -27,5 +27,5 @@ public class CreateNotifyArg extends Object {
         this.maxAcceleration = maxAcceleration;
     }
 
-    public void CreateNotifyArg( ) { }
+    public void CreateFrameData( ) { }
 }

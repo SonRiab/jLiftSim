@@ -7,8 +7,8 @@ import java.awt.event.ItemListener;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import jliftsim.CreateNotifyArg;
 import jliftsim.CreateObservable;
+import jliftsim.data.CreateFrameData;
 
 /**
  *
@@ -89,59 +89,59 @@ public class CreatePredefinedPanel extends JPanel
         if(e.getSource() == m_JComboBoxPredefined) {
             if(e.getStateChange() == ItemEvent.SELECTED) {
 
-                CreateNotifyArg cna = new CreateNotifyArg();
+                CreateFrameData cfd = new CreateFrameData();
                 switch(m_JComboBoxPredefined.getSelectedIndex()) {
                     case 0: //default
-                        cna.floors = 50;
-                        cna.maxPower = 10;
-                        cna.maxSpeed = 60;
-                        cna.maxLoad = 5000;
-                        cna.maxAcceleration = 20;
+                        cfd.floors = 50;
+                        cfd.maxPower = 10;
+                        cfd.maxSpeed = 60;
+                        cfd.maxLoad = 5000;
+                        cfd.maxAcceleration = 20;
                         break;
                     case 1: //Burj Khalifa (Dubai)
-                        cna.floors = 163;
-                        cna.maxPower = 11;
-                        cna.maxSpeed = 61;
-                        cna.maxLoad = 5001;
-                        cna.maxAcceleration = 21;
+                        cfd.floors = 163;
+                        cfd.maxPower = 11;
+                        cfd.maxSpeed = 61;
+                        cfd.maxLoad = 5001;
+                        cfd.maxAcceleration = 21;
                         break;
                     case 2: //Taipei 101 (Taipei)
-                        cna.floors = 101;
-                        cna.maxPower = 12;
-                        cna.maxSpeed = 62;
-                        cna.maxLoad = 5002;
-                        cna.maxAcceleration = 22;
+                        cfd.floors = 101;
+                        cfd.maxPower = 12;
+                        cfd.maxSpeed = 62;
+                        cfd.maxLoad = 5002;
+                        cfd.maxAcceleration = 22;
                         break;
                     case 3: //Petronas Towers (Kuala Lumpur)
-                        cna.floors = 88;
-                        cna.maxPower = 13;
-                        cna.maxSpeed = 63;
-                        cna.maxLoad = 5003;
-                        cna.maxAcceleration = 23;
+                        cfd.floors = 88;
+                        cfd.maxPower = 13;
+                        cfd.maxSpeed = 63;
+                        cfd.maxLoad = 5003;
+                        cfd.maxAcceleration = 23;
                         break;
                     case 4: //Commerzbank Tower (Frankfurt a. M.)
-                        cna.floors = 56;
-                        cna.maxPower = 14;
-                        cna.maxSpeed = 64;
-                        cna.maxLoad = 5004;
-                        cna.maxAcceleration = 24;
+                        cfd.floors = 56;
+                        cfd.maxPower = 14;
+                        cfd.maxSpeed = 64;
+                        cfd.maxLoad = 5004;
+                        cfd.maxAcceleration = 24;
                         break;
                     case 5: //Messeturm (Frankfurt a. M.)
-                        cna.floors = 56;
-                        cna.maxPower = 15;
-                        cna.maxSpeed = 65;
-                        cna.maxLoad = 5005;
-                        cna.maxAcceleration = 25;
+                        cfd.floors = 56;
+                        cfd.maxPower = 15;
+                        cfd.maxSpeed = 65;
+                        cfd.maxLoad = 5005;
+                        cfd.maxAcceleration = 25;
                         break;
                     case 6: //Park Inn (Berlin)
-                        cna.floors = 41;
-                        cna.maxPower = 16;
-                        cna.maxSpeed = 66;
-                        cna.maxLoad = 5006;
-                        cna.maxAcceleration = 26;
+                        cfd.floors = 41;
+                        cfd.maxPower = 16;
+                        cfd.maxSpeed = 66;
+                        cfd.maxLoad = 5006;
+                        cfd.maxAcceleration = 26;
                         break;
                 }
-                m_CreateObservable.predefinedChanged(cna);
+                m_CreateObservable.predefinedChanged(cfd);
             }
         }
     }
