@@ -25,13 +25,16 @@ public class Sim extends Observable implements Observer {
         m_SimData = new SimData(
             name, floors, maxPower, maxSpeed, maxLoad, maxAcceleration);
         m_SimFrame = new SimFrame();
+    }
+
+    public void connectObserver() {
         this.addObserver(m_SimFrame);
         this.addObserver(m_SimData);
         m_SimData.addObserver(this);
-        m_SimData.fireInitData();
     }
 
     public void startSimulation() {
+        m_SimData.fireInitData();
         System.out.println("Start Simulation");
     }
 

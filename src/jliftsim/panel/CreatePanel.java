@@ -146,6 +146,7 @@ public class CreatePanel extends JPanel implements ActionListener {
                 name, floors, maxPower, maxSpeed, maxLoad, maxAcceleration);
 
             m_Sim.add(sim);
+            sim.connectObserver();
             sim.startSimulation();
             System.out.println("Add new sim ("+name+")");
         }
