@@ -1,7 +1,6 @@
 package jliftsim;
 
 import jliftsim.frame.CreateFrame;
-import jliftsim.frame.SimFrame;
 
 /**
  *
@@ -11,9 +10,7 @@ import jliftsim.frame.SimFrame;
 public class JLiftSim {
 
     private static void createAndShowGUI() {
-        CreateFrame createFrame;
-        SimFrame[] simFrames;
-        createFrame = new CreateFrame();
+        CreateFrame createFrame = new CreateFrame();
     }
 
     /**
@@ -21,6 +18,7 @@ public class JLiftSim {
      */
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 createAndShowGUI();
             }
