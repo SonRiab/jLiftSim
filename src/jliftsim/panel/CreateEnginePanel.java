@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
-import jliftsim.data.CreateFrameData;
+import jliftsim.data.EngineData;
 
 /**
  *
@@ -172,9 +172,9 @@ public class CreateEnginePanel  extends JPanel implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        CreateFrameData cfd;
-        if( arg instanceof CreateFrameData ) {
-            cfd = (CreateFrameData)arg;
+        EngineData cfd;
+        if( arg instanceof EngineData ) {
+            cfd = (EngineData)arg;
                 m_JSpinnerMaxPower.setValue(cfd.maxPower);
                 m_JSpinnerMaxSpeed.setValue(cfd.maxSpeed);
                 m_JSpinnerMaxLoad.setValue(cfd.maxLoad);

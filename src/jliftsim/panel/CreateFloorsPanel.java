@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
-import jliftsim.data.CreateFrameData;
+import jliftsim.data.FloorData;
 
 /**
  *
@@ -67,10 +67,10 @@ public class CreateFloorsPanel extends JPanel implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        CreateFrameData cfd;
-        if( arg instanceof CreateFrameData ) {
-            cfd = (CreateFrameData)arg;
-            m_JSpinnerFloors.setValue(cfd.floors);
+        FloorData fd;
+        if( arg instanceof FloorData ) {
+            fd = (FloorData)arg;
+            m_JSpinnerFloors.setValue(fd.floors);
         }
     }
 }

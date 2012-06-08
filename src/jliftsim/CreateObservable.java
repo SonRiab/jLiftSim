@@ -1,7 +1,8 @@
 package jliftsim;
 
 import java.util.Observable;
-import jliftsim.data.CreateFrameData;
+import jliftsim.data.EngineData;
+import jliftsim.data.FloorData;
 
 /**
  *
@@ -10,8 +11,13 @@ import jliftsim.data.CreateFrameData;
  */
 public class CreateObservable extends Observable {
 
-    public void predefinedChanged(CreateFrameData cfd) {
+    public void engineChanged(EngineData ed) {
         this.setChanged();
-        this.notifyObservers(cfd);
+        this.notifyObservers(ed);
+    }
+
+    public void floorChanged(FloorData fd) {
+        this.setChanged();
+        this.notifyObservers(fd);
     }
 }

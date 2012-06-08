@@ -38,7 +38,11 @@ public class SimData extends Observable implements Observer {
     public void fireInitData() {
         System.out.println("fire init data");
         setChanged();
-        notifyObservers("fireInitData");
+        notifyObservers("fireInitData1");
+        setChanged();
+        notifyObservers("fireInitData2");
+        setChanged();
+        notifyObservers("fireInitData3");
     }
 
     @Override

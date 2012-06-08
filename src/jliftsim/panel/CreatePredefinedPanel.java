@@ -8,7 +8,8 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import jliftsim.CreateObservable;
-import jliftsim.data.CreateFrameData;
+import jliftsim.data.EngineData;
+import jliftsim.data.FloorData;
 
 /**
  *
@@ -88,60 +89,61 @@ public class CreatePredefinedPanel extends JPanel
     public void itemStateChanged(ItemEvent e) {
         if(e.getSource() == m_JComboBoxPredefined) {
             if(e.getStateChange() == ItemEvent.SELECTED) {
-
-                CreateFrameData cfd = new CreateFrameData();
+                FloorData fd = new FloorData();
+                EngineData ed = new EngineData();
                 switch(m_JComboBoxPredefined.getSelectedIndex()) {
                     case 0: //default
-                        cfd.floors = 50;
-                        cfd.maxPower = 10;
-                        cfd.maxSpeed = 60;
-                        cfd.maxLoad = 5000;
-                        cfd.maxAcceleration = 20;
+                        fd.floors = 50;
+                        ed.maxPower = 10;
+                        ed.maxSpeed = 60;
+                        ed.maxLoad = 5000;
+                        ed.maxAcceleration = 20;
                         break;
                     case 1: //Burj Khalifa (Dubai)
-                        cfd.floors = 163;
-                        cfd.maxPower = 11;
-                        cfd.maxSpeed = 61;
-                        cfd.maxLoad = 5001;
-                        cfd.maxAcceleration = 21;
+                        fd.floors = 163;
+                        ed.maxPower = 11;
+                        ed.maxSpeed = 61;
+                        ed.maxLoad = 5001;
+                        ed.maxAcceleration = 21;
                         break;
                     case 2: //Taipei 101 (Taipei)
-                        cfd.floors = 101;
-                        cfd.maxPower = 12;
-                        cfd.maxSpeed = 62;
-                        cfd.maxLoad = 5002;
-                        cfd.maxAcceleration = 22;
+                        fd.floors = 101;
+                        ed.maxPower = 12;
+                        ed.maxSpeed = 62;
+                        ed.maxLoad = 5002;
+                        ed.maxAcceleration = 22;
                         break;
                     case 3: //Petronas Towers (Kuala Lumpur)
-                        cfd.floors = 88;
-                        cfd.maxPower = 13;
-                        cfd.maxSpeed = 63;
-                        cfd.maxLoad = 5003;
-                        cfd.maxAcceleration = 23;
+                        fd.floors = 88;
+                        ed.maxPower = 13;
+                        ed.maxSpeed = 63;
+                        ed.maxLoad = 5003;
+                        ed.maxAcceleration = 23;
                         break;
                     case 4: //Commerzbank Tower (Frankfurt a. M.)
-                        cfd.floors = 56;
-                        cfd.maxPower = 14;
-                        cfd.maxSpeed = 64;
-                        cfd.maxLoad = 5004;
-                        cfd.maxAcceleration = 24;
+                        fd.floors = 56;
+                        ed.maxPower = 14;
+                        ed.maxSpeed = 64;
+                        ed.maxLoad = 5004;
+                        ed.maxAcceleration = 24;
                         break;
                     case 5: //Messeturm (Frankfurt a. M.)
-                        cfd.floors = 56;
-                        cfd.maxPower = 15;
-                        cfd.maxSpeed = 65;
-                        cfd.maxLoad = 5005;
-                        cfd.maxAcceleration = 25;
+                        fd.floors = 56;
+                        ed.maxPower = 15;
+                        ed.maxSpeed = 65;
+                        ed.maxLoad = 5005;
+                        ed.maxAcceleration = 25;
                         break;
                     case 6: //Park Inn (Berlin)
-                        cfd.floors = 41;
-                        cfd.maxPower = 16;
-                        cfd.maxSpeed = 66;
-                        cfd.maxLoad = 5006;
-                        cfd.maxAcceleration = 26;
+                        fd.floors = 41;
+                        ed.maxPower = 16;
+                        ed.maxSpeed = 66;
+                        ed.maxLoad = 5006;
+                        ed.maxAcceleration = 26;
                         break;
                 }
-                m_CreateObservable.predefinedChanged(cfd);
+                m_CreateObservable.engineChanged(ed);
+                m_CreateObservable.floorChanged(fd);
             }
         }
     }
