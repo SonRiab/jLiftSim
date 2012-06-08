@@ -2,7 +2,9 @@ package jliftsim;
 
 import java.util.Observable;
 import java.util.Observer;
-import jliftsim.frame.SimFrame;
+import jliftsim.data.EngineData;
+import jliftsim.data.FloorData;
+import jliftsim.data.NameData;
 
 /**
  *
@@ -11,13 +13,9 @@ import jliftsim.frame.SimFrame;
  */
 public class SimData extends Observable implements Observer {
 
-    private String m_Name;
-    private int m_Floors;
-    private int m_MaxPower;
-    private int m_MaxSpeed;
-    private int m_MaxLoad;
-    private int m_MaxAcceleration;
-    private SimFrame m_SimFrame;
+    private EngineData m_EngineData;
+    private FloorData m_FloorData;
+    private NameData m_NameData;
 
     public SimData (
          String name
@@ -27,27 +25,46 @@ public class SimData extends Observable implements Observer {
         ,int maxLoad
         ,int maxAcceleration
     ) {
-        m_Name = name;
-        m_Floors = floors;
-        m_MaxPower = maxPower;
-        m_MaxSpeed = maxSpeed;
-        m_MaxLoad = maxLoad;
-        m_MaxAcceleration = maxAcceleration;
+        m_EngineData = new EngineData();
+        m_FloorData = new FloorData();
+        m_NameData = new NameData();
+        m_NameData.name = name;
+
+        m_FloorData.floors = floors;
+
+        m_EngineData.maxPower = maxPower;
+        m_EngineData.maxSpeed = maxSpeed;
+        m_EngineData.maxLoad = maxLoad;
+        m_EngineData.maxAcceleration = maxAcceleration;
+    }
+
+    public void fireNameData() {
+        System.out.println("fireNameData");
+        setChanged();
+        notifyObservers(m_NameData);
+    }
+
+    public void fireFloorData() {
+        System.out.println("fireFloorData");
+        setChanged();
+        notifyObservers(m_FloorData);
+    }
+
+    public void fireEngineData() {
+        System.out.println("fireEngineData");
+        setChanged();
+        notifyObservers(m_EngineData);
     }
 
     public void fireInitData() {
-        System.out.println("fire init data");
-        setChanged();
-        notifyObservers("fireInitData1");
-        setChanged();
-        notifyObservers("fireInitData2");
-        setChanged();
-        notifyObservers("fireInitData3");
+        fireNameData();
+        fireFloorData();
+        fireEngineData();
     }
 
     @Override
     public void update(Observable o, Object arg) {
         //throw new UnsupportedOperationException("Not supported yet.");
-        System.out.println("Update in SimData"+arg.toString());
+        System.out.println("Update in SimData CLASS: "+arg.getClass().toString());
     }
 }

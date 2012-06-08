@@ -49,6 +49,6 @@ public class AnimationPanel extends JPanel implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println("Update Endlich in AnimationPanel! ");
     }
 }

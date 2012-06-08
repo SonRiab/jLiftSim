@@ -5,6 +5,9 @@ import java.awt.Toolkit;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JFrame;
+import jliftsim.data.EngineData;
+import jliftsim.data.FloorData;
+import jliftsim.data.NameData;
 import jliftsim.panel.SimPanel;
 
 /**
@@ -15,6 +18,10 @@ import jliftsim.panel.SimPanel;
 public class SimFrame extends JFrame implements Observer {
 
     SimPanel m_SimPanel;
+
+    public SimPanel getSimPanelInstance() {
+        return m_SimPanel;
+    }
 
     private void createAndShowGUI() {
         m_SimPanel = new SimPanel();
@@ -48,6 +55,23 @@ public class SimFrame extends JFrame implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         //throw new UnsupportedOperationException("Not supported yet.");
-        System.out.println("Update to SimFrame"+arg.toString());
+        System.out.println("Update to SimFrame!!! CLASS: "+
+            arg.getClass().toString());
+        FloorData fd;
+        EngineData ed;
+        NameData nd;
+        if( arg instanceof FloorData ) {
+            fd = (FloorData)arg;
+            System.out.println("FloorData");
+            //m_JSpinnerFloors.setValue(fd.floors);
+        }
+        else if (arg instanceof EngineData) {
+            ed = (EngineData)arg;
+            System.out.println("EngineData");
+        }
+        else if (arg instanceof NameData) {
+            nd = (NameData)arg;
+            System.out.println("NameData");
+        }
     }
 }

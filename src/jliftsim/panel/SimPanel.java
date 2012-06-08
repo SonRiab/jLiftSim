@@ -16,6 +16,18 @@ public class SimPanel extends JPanel implements Observer {
     private EnginePanel m_EnginePanel;
     private InCabinRoomPanel m_InCabinRoomPanel;
 
+    public EnginePanel getEnginePanelInstance() {
+        return m_EnginePanel;
+    }
+
+    public EnginePanel getInCabinRoomPanelInstance() {
+        return m_EnginePanel;
+    }
+
+    public EnginePanel getAnimationPanelInstance() {
+        return m_EnginePanel;
+    }
+
     public SimPanel(
     ) {
         m_EnginePanel = new EnginePanel();
@@ -46,6 +58,6 @@ public class SimPanel extends JPanel implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println("Update Endlich in SimPanel! ");
     }
 }

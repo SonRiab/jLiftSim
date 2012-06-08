@@ -29,6 +29,10 @@ public class Sim extends Observable implements Observer {
 
     public void connectObserver() {
         this.addObserver(m_SimFrame);
+        this.addObserver(m_SimFrame.getSimPanelInstance());
+        this.addObserver(m_SimFrame.getSimPanelInstance().getEnginePanelInstance());
+        this.addObserver(m_SimFrame.getSimPanelInstance().getInCabinRoomPanelInstance());
+        this.addObserver(m_SimFrame.getSimPanelInstance().getAnimationPanelInstance());
         this.addObserver(m_SimData);
         m_SimData.addObserver(this);
     }
@@ -41,8 +45,8 @@ public class Sim extends Observable implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         //throw new UnsupportedOperationException("Not supported yet.");
-        System.out.println("Update in Sim"+arg.toString());
+        System.out.println("Update in Sim CLASS: " +arg.toString());
         this.setChanged();
-        this.notifyObservers("notifyFromSim");
+        this.notifyObservers(arg);
     }
 }

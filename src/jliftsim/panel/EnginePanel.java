@@ -5,6 +5,9 @@ import java.awt.Rectangle;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
+import jliftsim.data.EngineData;
+import jliftsim.data.FloorData;
+import jliftsim.data.NameData;
 
 /**
  *
@@ -305,31 +308,65 @@ public class EnginePanel extends JPanel implements Observer {
         m_BottomSeparator.setBounds(r);
         this.add(m_BottomSeparator);
 
-        /*
-         * @TODO: remove
-         */
-        setPseudoData();
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+        EngineData ed;
+        if( arg instanceof EngineData ) {
+            ed = (EngineData)arg;
 
-    private void setPseudoData() {
-        m_JProgressBarCurrentPower.setValue(50);
-        m_JProgressBarCurrentSpeed.setValue(50);
-        m_JProgressBarCurrentLoad.setValue(50);
-        m_JProgressBarCurrentAcceleration.setValue(50);
+            m_JProgressBarCurrentPower.setMaximum(
+                ed.maxPower
+            );
+            m_JProgressBarCurrentSpeed.setMaximum(
+                ed.maxSpeed
+            );
+            m_JProgressBarCurrentLoad.setMaximum(
+                ed.maxLoad
+            );
+            m_JProgressBarCurrentAcceleration.setMaximum(
+                ed.maxAcceleration
+            );
 
-        m_JTextFieldCurrentPower.setText("50");
-        m_JTextFieldCurrentSpeed.setText("50");
-        m_JTextFieldCurrentLoad.setText("50");
-        m_JTextFieldCurrentAcceleration.setText("50");
+            m_JTextFieldMaxPower.setText(
+                String.valueOf(ed.maxPower)
+            );
+            m_JTextFieldMaxSpeed.setText(
+                String.valueOf(ed.maxSpeed)
+            );
+            m_JTextFieldMaxLoad.setText(
+                String.valueOf(ed.maxLoad)
+            );
+            m_JTextFieldMaxAcceleration.setText(
+                String.valueOf(ed.maxAcceleration)
+            );
 
-        m_JTextFieldMaxPower.setText("100");
-        m_JTextFieldMaxSpeed.setText("100");
-        m_JTextFieldMaxLoad.setText("100");
-        m_JTextFieldMaxAcceleration.setText("100");
+            m_JProgressBarCurrentPower.setValue(
+                ed.currentPower
+            );
+            m_JProgressBarCurrentSpeed.setValue(
+                ed.currentSpeed
+            );
+            m_JProgressBarCurrentLoad.setValue(
+                ed.currentLoad
+            );
+            m_JProgressBarCurrentAcceleration.setValue(
+                ed.currentAcceleration
+            );
+
+            m_JTextFieldCurrentPower.setText(
+                String.valueOf(ed.currentPower)
+            );
+            m_JTextFieldCurrentSpeed.setText(
+                String.valueOf(ed.currentSpeed)
+            );
+            m_JTextFieldCurrentLoad.setText(
+                String.valueOf(ed.currentLoad)
+            );
+            m_JTextFieldCurrentAcceleration.setText(
+                String.valueOf(ed.currentAcceleration)
+            );
+        }
     }
 }
