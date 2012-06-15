@@ -54,9 +54,7 @@ public class SimFrame extends JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        //throw new UnsupportedOperationException("Not supported yet.");
-        System.out.println("Update to SimFrame!!! CLASS: "+
-            arg.getClass().toString());
+        System.out.println("Update in SimFrame: " +arg.toString());
         FloorData fd;
         EngineData ed;
         NameData nd;

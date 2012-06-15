@@ -45,7 +45,7 @@ public class Sim extends Observable implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         //throw new UnsupportedOperationException("Not supported yet.");
-        System.out.println("Update in Sim CLASS: " +arg.toString());
+        System.out.println("Update in Sim: " +arg.toString());
         this.setChanged();
         this.notifyObservers(arg);
     }

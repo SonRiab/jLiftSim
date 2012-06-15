@@ -6,8 +6,6 @@ import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
 import jliftsim.data.EngineData;
-import jliftsim.data.FloorData;
-import jliftsim.data.NameData;
 
 /**
  *
@@ -312,6 +310,7 @@ public class EnginePanel extends JPanel implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+        System.out.println("Update in EnginePanel: " +arg.toString());
         EngineData ed;
         if( arg instanceof EngineData ) {
             ed = (EngineData)arg;

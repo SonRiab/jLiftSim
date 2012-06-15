@@ -64,7 +64,6 @@ public class SimData extends Observable implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        //throw new UnsupportedOperationException("Not supported yet.");
-        System.out.println("Update in SimData CLASS: "+arg.getClass().toString());
+        System.out.println("Update in SimData: " +arg.toString());
     }
 }
