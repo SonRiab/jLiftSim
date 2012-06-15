@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JPanel;
+import jliftsim.Sim;
 
 /**
  *
@@ -11,6 +12,8 @@ import javax.swing.JPanel;
  * @version 0.1a
  */
 public class SimPanel extends JPanel implements Observer {
+
+    private Sim m_SimInstance;
 
     private AnimationPanel m_AnimationPanel;
     private EnginePanel m_EnginePanel;
@@ -28,11 +31,11 @@ public class SimPanel extends JPanel implements Observer {
         return m_AnimationPanel;
     }
 
-    public SimPanel(
-    ) {
-        m_EnginePanel = new EnginePanel();
-        m_InCabinRoomPanel = new InCabinRoomPanel();
-        m_AnimationPanel = new AnimationPanel();
+    public SimPanel(Sim simInstance) {
+        m_SimInstance = simInstance;
+        m_EnginePanel = new EnginePanel(m_SimInstance);
+        m_InCabinRoomPanel = new InCabinRoomPanel(m_SimInstance);
+        m_AnimationPanel = new AnimationPanel(m_SimInstance);
 
         createAndShowGUI();
     }

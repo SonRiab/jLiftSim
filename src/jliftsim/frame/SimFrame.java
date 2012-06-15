@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JFrame;
+import jliftsim.Sim;
 import jliftsim.data.EngineData;
 import jliftsim.data.FloorData;
 import jliftsim.data.NameData;
@@ -18,13 +19,14 @@ import jliftsim.panel.SimPanel;
 public class SimFrame extends JFrame implements Observer {
 
     SimPanel m_SimPanel;
+    Sim m_SimInstance;
 
     public SimPanel getSimPanelInstance() {
         return m_SimPanel;
     }
 
     private void createAndShowGUI() {
-        m_SimPanel = new SimPanel();
+        m_SimPanel = new SimPanel(m_SimInstance);
         this.setVisible(true);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,7 +43,8 @@ public class SimFrame extends JFrame implements Observer {
         centerThis();
     }
 
-    public SimFrame() {
+    public SimFrame(Sim simInstance) {
+        m_SimInstance = simInstance;
         createAndShowGUI();
     }
 

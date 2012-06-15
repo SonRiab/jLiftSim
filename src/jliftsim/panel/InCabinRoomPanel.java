@@ -9,6 +9,7 @@ import java.util.Observer;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
+import jliftsim.Sim;
 
 /**
  *
@@ -17,6 +18,8 @@ import javax.swing.JPanel;
  */
 public class InCabinRoomPanel extends JPanel implements Observer,
         ActionListener {
+
+    private Sim m_SimInstance;
 
     private JButton m_JButtonAlarm;
     private JButton m_JButtonHand;
@@ -27,7 +30,8 @@ public class InCabinRoomPanel extends JPanel implements Observer,
 
     private JCheckBox m_JCheckBoxOverload;
 
-    public InCabinRoomPanel() {
+    public InCabinRoomPanel(Sim simInstance) {
+        m_SimInstance = simInstance;
         m_JButtonAlarm = new JButton();
         m_JButtonHand = new JButton();
         m_JButtonDoorClose = new JButton();
@@ -118,16 +122,18 @@ public class InCabinRoomPanel extends JPanel implements Observer,
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == m_JButtonHand) {
-            System.out.println("ButtonHand");
+        if(e.getSource() == m_JButtonAlarm) {
+            m_SimInstance.actionButtonAlarm();
+        } else if(e.getSource() == m_JButtonHand) {
+            m_SimInstance.actionButtonHand();
         } else if (e.getSource() == m_JButtonDoorClose) {
-            System.out.println("ButtonDoorClose");
+            m_SimInstance.actionButtonDoorClose();
         } else if (e.getSource() == m_JButtonEmergencyHold) {
-            System.out.println("ButtonAirCondition");
+            m_SimInstance.actionButtonEmergencyHold();
         } else if (e.getSource() == m_JButtonAirCondition) {
-            System.out.println("ButtonAirCondition");
+            m_SimInstance.actionButtonAirCondition();
         } else if (e.getSource() == m_JButtonDoorOpen) {
-            System.out.println("ButtonDoorOpen");
+            m_SimInstance.actionButtonDoorOpen();
         }
     }
 }

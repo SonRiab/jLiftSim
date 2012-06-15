@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
+import jliftsim.Sim;
 import jliftsim.data.EngineData;
 
 /**
@@ -13,6 +14,8 @@ import jliftsim.data.EngineData;
  * @version 0.1a
  */
 public class EnginePanel extends JPanel implements Observer {
+
+    private Sim m_SimInstance;
 
     private JLabel m_JLabelCurrentPower;
     private JLabel m_JLabelCurrentSpeed;
@@ -52,7 +55,8 @@ public class EnginePanel extends JPanel implements Observer {
     private JSeparator m_CurrentMaxSeparator;
     private JSeparator m_BottomSeparator;
 
-    public EnginePanel() {
+    public EnginePanel(Sim simInstance) {
+        m_SimInstance = simInstance;
         m_JLabelCurrentPower = new JLabel();
         m_JLabelCurrentSpeed = new JLabel();
         m_JLabelCurrentLoad = new JLabel();
