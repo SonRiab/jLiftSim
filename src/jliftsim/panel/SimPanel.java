@@ -20,12 +20,12 @@ public class SimPanel extends JPanel implements Observer {
         return m_EnginePanel;
     }
 
-    public EnginePanel getInCabinRoomPanelInstance() {
-        return m_EnginePanel;
+    public InCabinRoomPanel getInCabinRoomPanelInstance() {
+        return m_InCabinRoomPanel;
     }
 
-    public EnginePanel getAnimationPanelInstance() {
-        return m_EnginePanel;
+    public AnimationPanel getAnimationPanelInstance() {
+        return m_AnimationPanel;
     }
 
     public SimPanel(
