@@ -2,21 +2,26 @@ package jliftsim;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.Observable;
 import java.util.Observer;
 import jliftsim.frame.SimFrame;
+import jliftsim.panel.CreatePanel;
 
 /**
  *
  * @author Bernard Ladenthin (bernard@ladenthin.net)
  * @version 0.1a
  */
-public class Sim extends Observable implements Observer, ActionListener {
+public class Sim extends Observable implements Observer, ActionListener, WindowListener{
 
     SimData m_SimData;
     SimFrame m_SimFrame;
+    CreatePanel m_CreatePanel;
 
     public Sim (
+         CreatePanel createPanel,
          String name
         ,int floors
         ,int maxPower
@@ -24,9 +29,12 @@ public class Sim extends Observable implements Observer, ActionListener {
         ,int maxLoad
         ,int maxAcceleration
     ) {
+        m_CreatePanel = createPanel;
         m_SimData = new SimData(
             name, floors, maxPower, maxSpeed, maxLoad, maxAcceleration);
         m_SimFrame = new SimFrame(this);
+        m_SimFrame.setTitle(name);
+        m_SimFrame.addWindowListener(this);
     }
 
     public void connectObserver() {
@@ -99,6 +107,43 @@ public class Sim extends Observable implements Observer, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        //throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+        m_SimData = null;
+        m_SimFrame = null;
+        m_CreatePanel.notifyRemove(this);
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet.");
     }
 }

@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import jliftsim.CreateObservable;
 import jliftsim.data.EngineData;
 import jliftsim.data.FloorData;
+import jliftsim.data.NameData;
 
 /**
  *
@@ -91,59 +92,68 @@ public class CreatePredefinedPanel extends JPanel
             if(e.getStateChange() == ItemEvent.SELECTED) {
                 FloorData fd = new FloorData();
                 EngineData ed = new EngineData();
+                NameData nd = new NameData();
                 switch(m_JComboBoxPredefined.getSelectedIndex()) {
-                    case 0: //default
+                    case 0:
                         fd.floors = 50;
                         ed.maxPower = 10;
                         ed.maxSpeed = 60;
                         ed.maxLoad = 5000;
                         ed.maxAcceleration = 20;
+                        nd.name = "default";
                         break;
-                    case 1: //Burj Khalifa (Dubai)
+                    case 1:
                         fd.floors = 163;
                         ed.maxPower = 11;
                         ed.maxSpeed = 61;
                         ed.maxLoad = 5001;
                         ed.maxAcceleration = 21;
+                        nd.name = "Burj Khalifa (Dubai)";
                         break;
-                    case 2: //Taipei 101 (Taipei)
+                    case 2:
                         fd.floors = 101;
                         ed.maxPower = 12;
                         ed.maxSpeed = 62;
                         ed.maxLoad = 5002;
                         ed.maxAcceleration = 22;
+                        nd.name = "Taipei 101 (Taipei)";
                         break;
-                    case 3: //Petronas Towers (Kuala Lumpur)
+                    case 3:
                         fd.floors = 88;
                         ed.maxPower = 13;
                         ed.maxSpeed = 63;
                         ed.maxLoad = 5003;
                         ed.maxAcceleration = 23;
+                        nd.name = "Petronas Towers (Kuala Lumpur)";
                         break;
-                    case 4: //Commerzbank Tower (Frankfurt a. M.)
+                    case 4:
                         fd.floors = 56;
                         ed.maxPower = 14;
                         ed.maxSpeed = 64;
                         ed.maxLoad = 5004;
                         ed.maxAcceleration = 24;
+                        nd.name = "Commerzbank Tower (Frankfurt a. M.)";
                         break;
-                    case 5: //Messeturm (Frankfurt a. M.)
+                    case 5:
                         fd.floors = 56;
                         ed.maxPower = 15;
                         ed.maxSpeed = 65;
                         ed.maxLoad = 5005;
                         ed.maxAcceleration = 25;
+                        nd.name = "Messeturm (Frankfurt a. M.)";
                         break;
-                    case 6: //Park Inn (Berlin)
+                    case 6:
                         fd.floors = 41;
                         ed.maxPower = 16;
                         ed.maxSpeed = 66;
                         ed.maxLoad = 5006;
                         ed.maxAcceleration = 26;
+                        nd.name = "Park Inn (Berlin)";
                         break;
                 }
                 m_CreateObservable.engineChanged(ed);
                 m_CreateObservable.floorChanged(fd);
+                m_CreateObservable.nameChanged(nd);
             }
         }
     }

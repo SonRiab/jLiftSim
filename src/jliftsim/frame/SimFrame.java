@@ -29,7 +29,7 @@ public class SimFrame extends JFrame implements Observer {
         m_SimPanel = new SimPanel(m_SimInstance);
         this.setVisible(true);
         this.setResizable(false);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //this.setTitle("jLiftSim SimFrame ("+name+")");
         this.add(m_SimPanel);
         /*
@@ -75,4 +75,5 @@ public class SimFrame extends JFrame implements Observer {
             System.out.println("NameData");
         }
     }
+
 }
