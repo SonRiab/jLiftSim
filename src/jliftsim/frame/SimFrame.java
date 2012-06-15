@@ -6,6 +6,7 @@ import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JFrame;
 import jliftsim.Sim;
+import jliftsim.UserAction;
 import jliftsim.data.EngineData;
 import jliftsim.data.FloorData;
 import jliftsim.data.NameData;
@@ -19,14 +20,19 @@ import jliftsim.panel.SimPanel;
 public class SimFrame extends JFrame implements Observer {
 
     SimPanel m_SimPanel;
-    Sim m_SimInstance;
+    UserAction m_UserAction;
+
+    public SimFrame(UserAction userAction) {
+        m_UserAction = userAction;
+        createAndShowGUI();
+    }
 
     public SimPanel getSimPanelInstance() {
         return m_SimPanel;
     }
 
     private void createAndShowGUI() {
-        m_SimPanel = new SimPanel(m_SimInstance);
+        m_SimPanel = new SimPanel(m_UserAction);
         this.setVisible(true);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -41,11 +47,6 @@ public class SimFrame extends JFrame implements Observer {
         this.pack();
         this.pack();
         centerThis();
-    }
-
-    public SimFrame(Sim simInstance) {
-        m_SimInstance = simInstance;
-        createAndShowGUI();
     }
 
     public void centerThis() {

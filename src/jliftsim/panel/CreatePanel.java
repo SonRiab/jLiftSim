@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import jliftsim.CreateObservable;
+import jliftsim.NotifyRemove;
 import jliftsim.Sim;
 
 /**
@@ -17,7 +18,7 @@ import jliftsim.Sim;
  * @author Bernard Ladenthin (bernard@ladenthin.net)
  * @version 0.1a
  */
-public class CreatePanel extends JPanel implements ActionListener {
+public class CreatePanel extends JPanel implements ActionListener, NotifyRemove {
     private CreateNamePanel m_CreateNamePanel;
     private CreateFloorsPanel m_CreateFloorsPanel;
     private CreateEnginePanel m_CreateEnginePanel;
@@ -153,10 +154,6 @@ public class CreatePanel extends JPanel implements ActionListener {
         this.add(m_PredefinedSeparator);
     }
 
-    public void notifyRemove(Sim sim) {
-        m_Sim.remove(sim);
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         String name         = m_CreateNamePanel.getCreateName();
@@ -177,6 +174,13 @@ public class CreatePanel extends JPanel implements ActionListener {
             for(Sim s: m_Sim) {
                 System.out.println(s.toString());
             }
+        }
+    }
+
+    @Override
+    public void notifyRemove(Object o) {
+        if( o instanceof Sim ) {
+            m_Sim.remove((Sim)o);
         }
     }
 }

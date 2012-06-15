@@ -7,21 +7,20 @@ import java.awt.event.WindowListener;
 import java.util.Observable;
 import java.util.Observer;
 import jliftsim.frame.SimFrame;
-import jliftsim.panel.CreatePanel;
 
 /**
  *
  * @author Bernard Ladenthin (bernard@ladenthin.net)
  * @version 0.1a
  */
-public class Sim extends Observable implements Observer, ActionListener, WindowListener{
+public class Sim extends Observable implements Observer, ActionListener, WindowListener, UserAction {
 
     SimData m_SimData;
     SimFrame m_SimFrame;
-    CreatePanel m_CreatePanel;
+    NotifyRemove m_NotifyRemove;
 
     public Sim (
-         CreatePanel createPanel,
+         NotifyRemove notifyRemove,
          String name
         ,int floors
         ,int maxPower
@@ -29,7 +28,7 @@ public class Sim extends Observable implements Observer, ActionListener, WindowL
         ,int maxLoad
         ,int maxAcceleration
     ) {
-        m_CreatePanel = createPanel;
+        m_NotifyRemove = notifyRemove;
         m_SimData = new SimData(
             name, floors, maxPower, maxSpeed, maxLoad, maxAcceleration);
         m_SimFrame = new SimFrame(this);
@@ -51,48 +50,6 @@ public class Sim extends Observable implements Observer, ActionListener, WindowL
     public void startSimulation() {
         m_SimData.fireInitData();
         System.out.println("Start Simulation");
-    }
-
-    public void actionButtonEmergencyHold() {
-        System.out.println("Function in Sim: actionButtonEmergencyHold");
-        setChanged();
-        notifyObservers("actionButtonEmergencyHold pressed");
-        clearChanged();
-    }
-
-    public void actionButtonHand() {
-        System.out.println("Function in Sim: actionButtonHand");
-        setChanged();
-        notifyObservers("actionButtonHand pressed");
-        clearChanged();
-    }
-
-    public void actionButtonAlarm() {
-        System.out.println("Function in Sim: actionButtonAlarm");
-        setChanged();
-        notifyObservers("actionButtonAlarm pressed");
-        clearChanged();
-    }
-
-    public void actionButtonDoorClose() {
-        System.out.println("Function in Sim: actionButtonDoorClose");
-        setChanged();
-        notifyObservers("actionButtonDoorClose pressed");
-        clearChanged();
-    }
-
-    public void actionButtonAirCondition() {
-        System.out.println("Function in Sim: actionButtonAirCondition");
-        setChanged();
-        notifyObservers("actionButtonAirCondition pressed");
-        clearChanged();
-    }
-
-    public void actionButtonDoorOpen() {
-        System.out.println("Function in Sim: actionButtonDoorOpen");
-        setChanged();
-        notifyObservers("actionButtonDoorOpen pressed");
-        clearChanged();
     }
 
     @Override
@@ -124,7 +81,7 @@ public class Sim extends Observable implements Observer, ActionListener, WindowL
     public void windowClosed(WindowEvent e) {
         m_SimData = null;
         m_SimFrame = null;
-        m_CreatePanel.notifyRemove(this);
+        m_NotifyRemove.notifyRemove(this);
     }
 
     @Override
@@ -145,5 +102,53 @@ public class Sim extends Observable implements Observer, ActionListener, WindowL
     @Override
     public void windowDeactivated(WindowEvent e) {
         //throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void userActionAlarm() {
+        System.out.println("Function in Sim: actionButtonAlarm");
+        setChanged();
+        notifyObservers("actionButtonAlarm pressed");
+        clearChanged();
+    }
+
+    @Override
+    public void userActionHand() {
+        System.out.println("Function in Sim: actionButtonHand");
+        setChanged();
+        notifyObservers("actionButtonHand pressed");
+        clearChanged();
+    }
+
+    @Override
+    public void userActionDoorClose() {
+        System.out.println("Function in Sim: actionButtonDoorClose");
+        setChanged();
+        notifyObservers("actionButtonDoorClose pressed");
+        clearChanged();
+    }
+
+    @Override
+    public void userActionEmergencyHold() {
+        System.out.println("Function in Sim: actionButtonEmergencyHold");
+        setChanged();
+        notifyObservers("actionButtonEmergencyHold pressed");
+        clearChanged();
+    }
+
+    @Override
+    public void userActionAirCondition() {
+        System.out.println("Function in Sim: actionButtonAirCondition");
+        setChanged();
+        notifyObservers("actionButtonAirCondition pressed");
+        clearChanged();
+    }
+
+    @Override
+    public void userActionDoorOpen() {
+        System.out.println("Function in Sim: actionButtonDoorOpen");
+        setChanged();
+        notifyObservers("actionButtonDoorOpen pressed");
+        clearChanged();
     }
 }

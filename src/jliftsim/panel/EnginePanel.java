@@ -6,6 +6,7 @@ import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
 import jliftsim.Sim;
+import jliftsim.UserAction;
 import jliftsim.data.EngineData;
 
 /**
@@ -15,7 +16,7 @@ import jliftsim.data.EngineData;
  */
 public class EnginePanel extends JPanel implements Observer {
 
-    private Sim m_SimInstance;
+    private UserAction m_UserAction;
 
     private JLabel m_JLabelCurrentPower;
     private JLabel m_JLabelCurrentSpeed;
@@ -55,8 +56,8 @@ public class EnginePanel extends JPanel implements Observer {
     private JSeparator m_CurrentMaxSeparator;
     private JSeparator m_BottomSeparator;
 
-    public EnginePanel(Sim simInstance) {
-        m_SimInstance = simInstance;
+    public EnginePanel(UserAction userAction) {
+        m_UserAction = userAction;
         m_JLabelCurrentPower = new JLabel();
         m_JLabelCurrentSpeed = new JLabel();
         m_JLabelCurrentLoad = new JLabel();

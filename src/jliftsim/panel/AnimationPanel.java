@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import jliftsim.Sim;
+import jliftsim.UserAction;
 
 /**
  *
@@ -17,15 +18,15 @@ import jliftsim.Sim;
  */
 public class AnimationPanel extends JPanel implements Observer {
 
-    private Sim m_SimInstance;
+    private UserAction m_UserAction;
 
     private JSeparator m_LeftSeparator;
 
     private JCheckBox m_JCheckBoxDoorClosing;
     private JCheckBox m_JCheckBoxDoorOpening;
 
-    public AnimationPanel(Sim simInstance) {
-        m_SimInstance = simInstance;
+    public AnimationPanel(UserAction userAction) {
+        m_UserAction = userAction;
         m_LeftSeparator = new JSeparator();
 
         m_JCheckBoxDoorClosing = new JCheckBox();
