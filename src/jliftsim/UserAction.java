@@ -12,4 +12,5 @@ public interface UserAction {
     public void userActionEmergencyHold();
     public void userActionAirCondition();
     public void userActionDoorOpen();
+    public void userActionToFloor(int floor);
 }

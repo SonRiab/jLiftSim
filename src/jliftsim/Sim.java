@@ -40,7 +40,8 @@ public class Sim extends Observable implements Observer, ActionListener, WindowL
         this.addObserver(m_SimFrame);
         this.addObserver(m_SimFrame.getSimPanelInstance());
         this.addObserver(m_SimFrame.getSimPanelInstance().getEnginePanelInstance());
-        this.addObserver(m_SimFrame.getSimPanelInstance().getInCabinRoomPanelInstance());
+        this.addObserver(m_SimFrame.getSimPanelInstance().getInCabinRoomPanelInstance().getInCabinRoomFloorsPanelInstance());
+        this.addObserver(m_SimFrame.getSimPanelInstance().getAnimationPanelInstance());
         this.addObserver(m_SimFrame.getSimPanelInstance().getAnimationPanelInstance());
         this.addObserver(m_SimData);
         System.out.println("countObservers: "+countObservers());
@@ -149,6 +150,14 @@ public class Sim extends Observable implements Observer, ActionListener, WindowL
         System.out.println("Function in Sim: actionButtonDoorOpen");
         setChanged();
         notifyObservers("actionButtonDoorOpen pressed");
+        clearChanged();
+    }
+
+    @Override
+    public void userActionToFloor(int floor) {
+        System.out.println("Function in Sim: userActionToFloor");
+        setChanged();
+        notifyObservers("call to floor: "+String.valueOf(floor));
         clearChanged();
     }
 }

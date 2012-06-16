@@ -31,7 +31,7 @@ public class CreatePanel extends JPanel implements ActionListener, NotifyRemove 
     private JSeparator m_EngineSeparator;
     private JSeparator m_PredefinedSeparator;
 
-    private List<Sim> m_Sim;
+    private ArrayList<Sim> m_Sim;
 
     private CreateObservable m_CreateObservable;
 

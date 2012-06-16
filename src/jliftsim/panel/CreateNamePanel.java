@@ -59,7 +59,7 @@ public class CreateNamePanel extends JPanel implements Observer {
          */
         r.x = 130;
         r.y = 10;
-        r.width = 80;
+        r.width = 160;
         r.height = 20;
         m_JTextFieldCreateName.setBounds(r);
         this.add(m_JTextFieldCreateName);

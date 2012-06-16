@@ -9,6 +9,7 @@ import java.util.Observer;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import jliftsim.UserAction;
 
 /**
@@ -30,6 +31,10 @@ public class InCabinRoomPanel extends JPanel implements Observer,
 
     private JCheckBox m_JCheckBoxOverload;
 
+    private InCabinRoomFloorsPanel m_InCabinRoomFloorsPanel;
+
+    private JScrollPane m_InCabinRoomFloorsScrollPane;
+
     public InCabinRoomPanel(UserAction userAction) {
         m_UserAction = userAction;
         m_JButtonAlarm = new JButton();
@@ -41,6 +46,7 @@ public class InCabinRoomPanel extends JPanel implements Observer,
 
         m_JCheckBoxOverload = new JCheckBox();
 
+        m_InCabinRoomFloorsPanel = new InCabinRoomFloorsPanel(m_UserAction);
         createAndShowGUI();
     }
 
@@ -113,6 +119,23 @@ public class InCabinRoomPanel extends JPanel implements Observer,
         m_JCheckBoxOverload.setSelected(true);
         m_JCheckBoxOverload.setBounds(r);
         this.add(m_JCheckBoxOverload);
+
+        //######################################################################
+        /*
+         * InCabinRoomFloorsPanel
+         */
+        r.x = 0;
+        r.y = 130;
+        r.width = 700;
+        r.height = 300;
+
+        m_InCabinRoomFloorsScrollPane = new JScrollPane(m_InCabinRoomFloorsPanel);
+        m_InCabinRoomFloorsScrollPane.setBounds(r);
+        this.add(m_InCabinRoomFloorsScrollPane);
+    }
+
+    public InCabinRoomFloorsPanel getInCabinRoomFloorsPanelInstance() {
+        return m_InCabinRoomFloorsPanel;
     }
 
     @Override
